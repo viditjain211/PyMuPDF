@@ -132,21 +132,22 @@ else:
         # library_dirs=['./mupdf/platform/win32/x64/Release'],
     )
 
-pkg_tab = open("PKG-INFO").read().split("\n")
-long_dtab = []
-classifier = []
-for l in pkg_tab:
-    if l.startswith("Classifier: "):
-        classifier.append(l[12:])
+pkg_tab = open("PKG-INFO", "rb").read().splitlines()
+long_dtab = []  # long description lines
+classifier = []  # classifier lines
+for line in pkg_tab:
+    line = line.decode()
+    if line.startswith("Classifier: "):
+        classifier.append(line[12:])
         continue
-    if l.startswith(" "):
-        long_dtab.append(l.strip())
+    if line.startswith(" ") or line == "":
+        long_dtab.append(line.strip())
 long_desc = "\n".join(long_dtab)
 
 setup(
     name="PyMuPDF",
-    version="1.18.12",
-    description="Python bindings for the PDF rendering library MuPDF",
+    version="1.18.13",
+    description="Python bindings for the PDF toolkit and renderer MuPDF",
     long_description=long_desc,
     classifiers=classifier,
     url="https://github.com/pymupdf/PyMuPDF",
@@ -156,5 +157,4 @@ setup(
     ext_modules=[module],
     py_modules=["fitz.fitz", "fitz.utils", "fitz.__main__"],
     license="GNU AFFERO GPL 3.0",
-    data_files=["README.md"],
 )
