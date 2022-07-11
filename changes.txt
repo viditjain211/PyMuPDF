@@ -2,6 +2,24 @@ Change Log
 ===========
 
 
+**Changes in Version 1.20.2**
+
+* **Fixed** `#1787 <https://github.com/pymupdf/PyMuPDF/issues/1787>`_.
+  Fix linking issues on Unix systems.
+
+* Improvements to documentation:
+
+  * Improved information about building from source in ``docs/installation.rst``.
+  * Clarified memory allocation setting ``JM_MEMORY` in ``docs/tools.rst``.
+  * Fixed link to PDF Reference manual in ``docs/app3.rst``.
+  * Fixed building of html documentation on OpenBSD.
+
+* Removed some unused files and directories:
+
+  * ``installation/``
+  * ``docs/wheelnames.txt``
+
+
 **Changes in Version 1.20.1**
 
 * **Fixed** `#1724 <https://github.com/pymupdf/PyMuPDF/issues/1724>`_.
